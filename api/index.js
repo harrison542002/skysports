@@ -11,9 +11,12 @@ dotenv.config();
 const APP_V1 = "/api/v1";
 const app = express();
 
+app.use(express.static("public"));
 app.use(morganMiddleware);
 app.use(cors());
 app.use(express.json());
+
+swaggerDocs(app);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -22,8 +25,6 @@ app.get("/", (req, res) => {
 app.use(`${APP_V1}/league`, leagueRouter);
 
 const PORT = process.env.PORT || 8080;
-
-swaggerDocs(app, PORT);
 
 app.listen(PORT, async () => {
   logger.info(`Server is running on port ${PORT}`);
