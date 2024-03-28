@@ -22,8 +22,14 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 
 const swaggerDocs = (app, port) => {
+  const CSS_URL =
+    "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
   //Swagger page
-  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec, { customCssUrl: CSS_URL })
+  );
 
   //Docs in JSON format
   app.get("docs.json", (req, res) => {
