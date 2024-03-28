@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model league {
+  league_id   Int        @id @default(autoincrement())
+  league_name String     @db.VarChar(100)
+  league_logo String     @db.Text
+  season      String     @db.VarChar(10)
+  slug        String     @db.VarChar(100)
+  standing    standing[]
+}
+
+model standing {
+  standing_id   Int    @id @default(autoincrement())
+  team_name     String @db.VarChar(100)
+  played        Int
+  won           Int
+  draw          Int
+  lost          Int
+  goals_for     Int
+  goals_against Int
+  goals_diff    Int
+  points        Int
+  detail_url    String @db.Text
+  league_id     Int
+  league        league @relation(fields: [league_id], references: [league_id], onDelete: NoAction, onUpdate: NoAction, map: "standing_ibfk_1")
+
+  @@index([league_id], map: "league_id")
+}
