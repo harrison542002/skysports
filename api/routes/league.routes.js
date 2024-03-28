@@ -13,10 +13,6 @@ const leagueRouter = express.Router();
  *    responses:
  *     200:
  *      description : Get a list of leagues
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/ListLeagueResponse'
  */
 leagueRouter.get("/", LeagueController.findAllLeague);
 
@@ -36,16 +32,6 @@ leagueRouter.get("/", LeagueController.findAllLeague);
  *    responses:
  *     200:
  *      description : League Detail
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/League'
- *          example:
- *            league_id: 1,
- *            league_name: Premier League
- *            league_logo: ""
- *            season: 2023/2024,
- *            slug: premier-league-table
  */
 leagueRouter.get("/:slug", LeagueController.findSingleLeague);
 
@@ -65,10 +51,6 @@ leagueRouter.get("/:slug", LeagueController.findSingleLeague);
  *    responses:
  *     200:
  *      description : List of standings
- *      content:
- *        application/json:
- *          schema:
- *            $ref: '#/components/schemas/ListStandingResponse'
  */
 leagueRouter.get("/:league_id/standings", findStandingByLeague);
 
