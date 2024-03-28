@@ -23,9 +23,10 @@ app.use(`${APP_V1}/league`, leagueRouter);
 
 const PORT = process.env.PORT || 8080;
 
+swaggerDocs(app, PORT);
+
 app.listen(PORT, async () => {
   logger.info(`Server is running on port ${PORT}`);
-  swaggerDocs(app, PORT);
 });
 
 export default app;
