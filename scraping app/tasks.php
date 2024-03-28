@@ -17,11 +17,10 @@ function get_standing($standing, $league_id)
   $team['lost'] = (int) $standing->children(5)->text();
   $team['goals_for'] = (int) $standing->children(6)->text();
   $team['goals_against'] = (int) $standing->children(7)->text();
-  $team['goal_diff'] = (int) $standing->children(8)->text();
+  $team['goals_diff'] = (int) $standing->children(8)->text();
   $team['points'] = (int) $standing->children(9)->text();
   $team['detail_url'] =  $standing->children(1)->children(0)->getAttribute("href");
   $team['league_id'] = $league_id;
-
   $insert_stmt_for_standing->execute();
 }
 
