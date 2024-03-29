@@ -10,6 +10,17 @@ const leagueRouter = express.Router();
  *    tags:
  *    - League
  *    summary: get list of leagues
+ *    parameters:
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: Page number of this data
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: integer
+ *        description: The number of items to return
  *    responses:
  *     200:
  *      description : Get a list of leagues
@@ -48,6 +59,16 @@ leagueRouter.get("/:slug", LeagueController.findSingleLeague);
  *        required: true
  *        schema:
  *          type: integer
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        description: Page number of this data
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: integer
+ *        description: The number of items to return
  *    responses:
  *     200:
  *      description : List of standings
